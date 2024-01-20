@@ -1,38 +1,35 @@
-import {
-  BlogCard,
-  Container,
-  Section,
-  Heading,
-  Statistics,
-  ForbesList,
-  CryptoHistory,
-} from 'components';
-import article from '../../data/article.json';
-import data from '../../data/data.json';
-import forbes from '../../data/forbes.json';
-import transactions from 'data/transactions.json';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import { Container, Header, Section, Text } from 'components';
+import { Gallery, Todos } from 'tabs';
 
 export const App = () => {
   return (
-    <Section>
-      <Container>
-        <Heading marginBottom="50px" textAlign="center">
-          Task 1
-        </Heading>
-        <BlogCard {...article} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 2
-        </Heading>
-        <Statistics title="Main Statistics" stats={data} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 3
-        </Heading>
-        <ForbesList list={forbes} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 4
-        </Heading>
-        <CryptoHistory transactions={transactions} />
-      </Container>
-    </Section>
+    <>
+      <Header />
+
+      <Section>
+        <Container>
+          <Tabs>
+            <TabList>
+              <Tab>
+                <Text>Gallery</Text>
+              </Tab>
+              <Tab>
+                <Text>Todos</Text>
+              </Tab>
+            </TabList>
+
+            <TabPanel>
+              <Gallery />
+            </TabPanel>
+
+            <TabPanel>
+              <Todos />
+            </TabPanel>
+          </Tabs>
+        </Container>
+      </Section>
+    </>
   );
 };
