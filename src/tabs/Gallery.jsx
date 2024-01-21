@@ -44,13 +44,19 @@ export const Gallery = () => {
     }
   };
 
-  const elements = images.map(({ id, avg_color, alt, src: { medium, large } }) => (
-    <GridItem key={id} id={id}>
-      <CardItem color={avg_color}>
-        <img onClick={() => handleImageClick({ large, alt })} src={medium} alt={alt} />
-      </CardItem>
-    </GridItem>
-  ));
+  const elements = images.map(
+    ({ id, avg_color, alt, src: { medium, large } }) => (
+      <GridItem key={id} id={id}>
+        <CardItem color={avg_color}>
+          <img
+            onClick={() => handleImageClick({ large, alt })}
+            src={medium}
+            alt={alt}
+          />
+        </CardItem>
+      </GridItem>
+    )
+  );
   const onClick = () => {
     setPage((prev) => prev + 1);
   };
@@ -77,7 +83,12 @@ export const Gallery = () => {
       {isOpen && (
         <div onClick={handleBackdropClick} style={styles}>
           {" "}
-          <img src={dataForModal.large} alt={dataForModal.alt} width={400} height={360} />
+          <img
+            src={dataForModal.large}
+            alt={dataForModal.alt}
+            width={400}
+            height={360}
+          />
         </div>
       )}
       {!isLastPage && <Button onClick={onClick}>Load more...</Button>}
