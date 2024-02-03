@@ -1,18 +1,18 @@
-import {
-  Container,
-  SearchForm,
-  Section,
-  Heading,
-  Loader,
-  CountryList,
-} from 'components';
+// import {
+//   Container,
+//   SearchForm,
+//   Section,
+//   Heading,
+//   Loader,
+//   CountryList,
+// } from 'components';
 
-export const CountrySearch = () => {
-  return (
-    <Section>
-      <Container>
-        <h2>CountrySearch</h2>
-      </Container>
-    </Section>
-  );
-};
+// export const CountrySearch = () => {
+//   return (
+//     <Section>
+//       <Container>
+//         <h2>CountrySearch</h2>
+//       </Container>
+//     </Section>
+//   );
+// };

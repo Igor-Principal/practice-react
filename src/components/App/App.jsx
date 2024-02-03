@@ -1,5 +1,6 @@
 import { Header } from 'components';
-import { CountrySearch, Home, Country } from 'pages';
+// import { CountrySearch, Home, Country } from 'pages';
+import { Home, Country } from 'pages';
 import { Route, Routes } from 'react-router';
 
 export const App = () => {

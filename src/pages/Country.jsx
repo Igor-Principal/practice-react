@@ -1,5 +1,5 @@
 import { Section, Container, CountryInfo, Loader, GoBackBtn } from 'components';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { fetchCountry } from 'service/country-service';
 
@@ -16,7 +16,7 @@ export const Country = () => {
       .catch(console.log)
       .finally(setIsLoading(false));
   }, []);
-  console.log(country);
+  
   return (
     <Section>
       <Container>
