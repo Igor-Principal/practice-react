@@ -15,8 +15,8 @@ export const Country = () => {
       .then(data => setCountry(data))
       .catch(console.log)
       .finally(setIsLoading(false));
-  }, []);
-  
+  }, [countryId]);
+
   return (
     <Section>
       <Container>
