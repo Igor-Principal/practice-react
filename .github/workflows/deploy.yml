@@ -2,7 +2,7 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [react-02]
+    branches: [lesson3]
 
 jobs:
   build-and-deploy:
