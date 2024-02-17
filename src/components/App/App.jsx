@@ -57,7 +57,7 @@ export const App = () => {
       <Header />
       <Section>
         <Container>
-          {/* <SearchForm /> */}
+          <SearchForm />
 
           {todos.length === 0 && (
             <Text textAlign="center">There are no any todos ... </Text>
@@ -67,12 +67,12 @@ export const App = () => {
             {todos.length > 0 &&
               todos.map((todo, index) => (
                 <GridItem key={todo.id}>
-                  <Todo
+                  {/* <Todo
                     id={todo.id}
                     text={todo.text}
                     counter={index + 1}
                     onClick={this.deleteTodo}
-                  />
+                  /> */}
                 </GridItem>
               ))}
           </Grid>

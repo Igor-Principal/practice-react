@@ -6,10 +6,12 @@ const todoSlice = createSlice({
     todos: [],
   },
   reducers: {
-    createPost(state, action) {},
+    addToDO(state, action) {
+    state.todos = [...state.todos, action.payload]
+    },
   },
 });
 
-export const { createPost } = todoSlice.actions;
+export const { addToDO} = todoSlice.actions;
 
 export const todoReducer = todoSlice.reducer;
