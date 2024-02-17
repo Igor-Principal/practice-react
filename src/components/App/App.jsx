@@ -1,38 +1,83 @@
+import { Component, useState } from 'react';
+import { nanoid } from 'nanoid';
+
 import {
-  BlogCard,
   Container,
+  Grid,
+  GridItem,
+  Header,
+  SearchForm,
   Section,
-  Heading,
-  Statistics,
-  ForbesList,
-  CryptoHistory,
+  Text,
+  Todo,
 } from 'components';
-import article from '../../data/article.json';
-import data from '../../data/data.json';
-import forbes from '../../data/forbes.json';
-import transactions from 'data/transactions.json';
+import { useSelector } from 'react-redux';
+import { selectTodos } from '../../redux/todo-selector';
 
 export const App = () => {
+  const todos = useSelector(selectTodos);
+  // componentDidMount() {
+  //   const todos = JSON.parse(localStorage.getItem('todos'));
+
+  //   if (todos) {
+  //     this.setState(() => ({ todos }));
+  //   }
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { todos } = this.state;
+
+  //   if (prevState.todos !== todos) {
+  //     localStorage.setItem('todos', JSON.stringify(todos));
+  //   }
+  // }
+
+  // addTodo = text => {
+  //   const todo = {
+  //     id: nanoid(),
+  //     text,
+  //   };
+
+  //   this.setState(({ todos }) => ({
+  //     todos: [...todos, todo],
+  //   }));
+  // };
+
+  // handleSubmit = data => {
+  //   this.addTodo(data);
+  // };
+
+  // deleteTodo = id => {
+  //   this.setState(prevState => ({
+  //     todos: prevState.todos.filter(todo => todo.id !== id),
+  //   }));
+  // };
+
   return (
-    <Section>
-      <Container>
-        <Heading marginBottom="50px" textAlign="center">
-          Task 1
-        </Heading>
-        <BlogCard {...article} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 2
-        </Heading>
-        <Statistics title="Main Statistics" stats={data} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 3
-        </Heading>
-        <ForbesList list={forbes} />
-        <Heading marginTop="50px" marginBottom="50px" textAlign="center">
-          Task 4
-        </Heading>
-        <CryptoHistory transactions={transactions} />
-      </Container>
-    </Section>
+    <>
+      <Header />
+      <Section>
+        <Container>
+          {/* <SearchForm /> */}
+
+          {todos.length === 0 && (
+            <Text textAlign="center">There are no any todos ... </Text>
+          )}
+
+          <Grid>
+            {todos.length > 0 &&
+              todos.map((todo, index) => (
+                <GridItem key={todo.id}>
+                  <Todo
+                    id={todo.id}
+                    text={todo.text}
+                    counter={index + 1}
+                    onClick={this.deleteTodo}
+                  />
+                </GridItem>
+              ))}
+          </Grid>
+        </Container>
+      </Section>
+    </>
   );
 };
