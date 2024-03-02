@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import { TiThumbsUp, TiThumbsDown } from "react-icons/ti";
 import { formatDateToNow } from "../../helpers/formatDateToNow";
 import { Button } from "../Button/Button";
-import { useDeleteCommentByIdMutation } from "../../redux/commentApi";
+import {
+  useDeleteCommentByIdMutation,
+  useUpdateCommentByIdMutation,
+} from "../../redux/commentApi";
 
 export const Comment = ({
   createdAt,
@@ -19,6 +22,7 @@ export const Comment = ({
   const handleDelete = (e) => {
     deleteComment(id);
   };
+
   return (
     <li className={styles.card}>
       <img className={styles.avatar} src={avatar} alt={author} />
