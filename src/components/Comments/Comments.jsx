@@ -13,7 +13,7 @@ export const Comments = () => {
   const { data: comments, isFetching } = useGetAllCommentsQuery();
   const filter = useSelector(selectFilter);
   const getFilteredComments = (comments, filter) => {
-    comments.filter(({ content }) =>
+    return comments.filter(({ content }) =>
       content.toLowerCase().includes(filter.toLowerCase())
     );
   };

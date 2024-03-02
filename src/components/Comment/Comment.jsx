@@ -1,9 +1,10 @@
-import React from 'react';
-import styles from './Comment.module.css';
-import PropTypes from 'prop-types';
-import { TiThumbsUp, TiThumbsDown } from 'react-icons/ti';
-import { formatDateToNow } from '../../helpers/formatDateToNow';
-import { Button } from '../Button/Button';
+import React from "react";
+import styles from "./Comment.module.css";
+import PropTypes from "prop-types";
+import { TiThumbsUp, TiThumbsDown } from "react-icons/ti";
+import { formatDateToNow } from "../../helpers/formatDateToNow";
+import { Button } from "../Button/Button";
+import { useDeleteCommentByIdMutation } from "../../redux/commentApi";
 
 export const Comment = ({
   createdAt,
@@ -14,6 +15,10 @@ export const Comment = ({
   thumbsDown,
   id,
 }) => {
+  const [deleteComment, { isLoading }] = useDeleteCommentByIdMutation();
+  const handleDelete = (e) => {
+    deleteComment(id);
+  };
   return (
     <li className={styles.card}>
       <img className={styles.avatar} src={avatar} alt={author} />
@@ -29,13 +34,15 @@ export const Comment = ({
 
         <div className={styles.cardFooter}>
           <span className={styles.date}>{formatDateToNow(createdAt)}</span>
-
+          <button onClick={handleDelete} type="button">
+            {isLoading ? "..." : "Delete"}
+          </button>
           <div className={styles.buttonBox}>
             <Button counter={thumbsUp} id={id}>
               <TiThumbsUp className={styles.icon} />
             </Button>
 
-            <Button counter={thumbsDown} role='thumbsDown' id={id}>
+            <Button counter={thumbsDown} role="thumbsDown" id={id}>
               <TiThumbsDown className={styles.icon} />
             </Button>
           </div>
